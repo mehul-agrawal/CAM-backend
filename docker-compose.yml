@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+      image: postgres
+      container_name: django-rest-api-db
+      volumes:
+        - ./data:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_USER=${DB_USER}
+        - POSTGRES_PASSWORD=${DB_PASSWORD}
+        - POSTGRES_DB=${DB_NAME}
+      restart: always
+      env_file:
+        - .env
+
+  api:
+    build: .
+    command: bash -c "make install-django && make run"
+    container_name: django-rest-api
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8888:8888"
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=${DB_HOST}
+    depends_on:
+      - db
+    env_file:
+      - .env

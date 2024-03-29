@@ -1,0 +1,12 @@
+[coverage:run]
+source = .
+omit =
+    */migrations/*
+    */__init__.py
+    */test/*
+    */urls.py
+    core/settings.py
+    core/wsgi.py
+    core/management/commands/*
+    core/asgi.py
+    manage.py
