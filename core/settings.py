@@ -26,7 +26,7 @@ DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 ALLOWED_HOSTS = [host for host in os.environ.get('ALLOWED_HOSTS', '*').split(',')]
 
 # CORS configuration
-CORS_ORIGIN_ALLOW_ALL = bool(int(os.environ.get('CORS_ORIGIN_ALLOW_ALL', 0)))
+CORS_ORIGIN_ALLOW_ALL = bool(int(os.environ.get('CORS_ORIGIN_ALLOW_ALL', 1)))
 if os.environ.get('CORS_ALLOWED_ORIGINS', None):
     CORS_ALLOWED_ORIGINS = [host for host in os.environ.get('CORS_ALLOWED_ORIGINS').split(',')]
 

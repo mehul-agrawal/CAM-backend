@@ -1,8 +1,13 @@
-# File created at 2024-03-29 16:14:49 UTCfrom django.urls import include, path
-from rest_framework_nested import routers
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from . import views
 
-router = routers.SimpleRouter()
+# Create a router and register the viewsets with it
+router = DefaultRouter()
+router.register(r'assignments', views.AssignmentView, basename='assignment')
+router.register(r'marks', views.MarksView, basename='mark')
 
+# The API URLs are now determined automatically by the router.
 urlpatterns = [
-	path('', include(router.urls))
+    path('', include(router.urls)),
 ]
