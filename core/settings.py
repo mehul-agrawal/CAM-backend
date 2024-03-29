@@ -71,6 +71,7 @@ BUSINESS_APPS = [
     'users',
     'authentication',
     'emailer',
+    'cam'
 ]
 INSTALLED_APPS += BUSINESS_APPS
 
