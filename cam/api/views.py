@@ -1,8 +1,8 @@
-# File created at 2024-03-29 16:14:49 UTCfrom rest_framework import viewsets
 
 from rest_framework import viewsets, status, filters , permissions
 from cam import models
 from cam.api import serializers
+from django_filters.rest_framework import DjangoFilterBackend
 
 class AssignmentView(viewsets.ModelViewSet):
     queryset = models.Assignment.objects.all()
@@ -10,6 +10,8 @@ class AssignmentView(viewsets.ModelViewSet):
     http_method_names = ["post", "get", "patch"]
     pagination_class = None
     permission_classes = [permissions.AllowAny]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["subject"]
 
 class MarksView(viewsets.ModelViewSet):
     queryset = models.Marks.objects.all()

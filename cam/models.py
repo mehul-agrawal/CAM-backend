@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Subject(models.TextChoices):
     CN = "CN", "Computer Networks"
     DSA = "DSA", "Data Structures and Algorithms"
+    DBMS = "DBMS", "Data Base Management System"
+    OOP = "OOP", "Object Oriented Programming"
 class Course(models.TextChoices):
     CS = "CS", "Computer Science"
     IT = "IT", "Information Technology"

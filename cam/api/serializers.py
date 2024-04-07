@@ -9,12 +9,16 @@ class AssignmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MarksSerializer(serializers.ModelSerializer):
+    subject = serializers.SerializerMethodField(read_only=True)
     assignment_name = serializers.SerializerMethodField(read_only=True)
     total_marks = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Marks
         fields = '__all__'
+    
+    def get_subject(self, obj):
+        return obj.assignment.subject
 
     def get_assignment_name(self, obj):
         return obj.assignment.name
